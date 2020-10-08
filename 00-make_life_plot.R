@@ -1,6 +1,9 @@
 library(tidyverse)
 library(lubridate)
 library(ggsci)
+library(extrafont)
+
+loadfonts(device = 'win')
 
 df <- tibble(
   date = seq(mdy('9/1/1987'), floor_date(Sys.Date(), 'month'), 'month')
@@ -67,7 +70,7 @@ plot <- base_plot +
     y = 15,
     hjust = 0,
     label = '1 square = 1 month',
-    fontface = 'bold.italic'
+    family = "Segoe Script"
   )
 
 ## annotate eras with labels
@@ -84,63 +87,63 @@ plot <- plot +
     x = 1989,
     y = -1,
     label = 'Childhood',
-    fontface = 'bold.italic',
     color = pallete_colors[[1]],
-    size = annotation_size
+    size = annotation_size,
+    family = "Segoe Script"
   )  +
   annotate(
     'text',
     x = 1998,
     y = -1,
     label = 'K-12 Grade School',
-    fontface = 'bold.italic',
     color = pallete_colors[[2]],
-    size = annotation_size
+    size = annotation_size,
+    family = "Segoe Script"
   ) +
   annotate(
     'text',
     x = 2007.5,
     y = -1,
     label = 'BSc in Biological Sciences',
-    fontface = 'bold.italic',
     color = pallete_colors[[3]],
-    size = annotation_size
+    size = annotation_size,
+    family = "Segoe Script"
   ) +
   annotate(
     'text',
     x = 2011,
     y = 14,
     label = 'Pre Graduate Employment',
-    fontface = 'bold.italic',
     color = pallete_colors[[4]],
-    size = annotation_size
+    size = annotation_size,
+    family = "Segoe Script"
   ) +
   annotate(
     'text',
     x = 2013,
     y = -3,
     label = 'MPH in Biostatistics & Epidemiology',
-    fontface = 'bold.italic',
     color = pallete_colors[[5]],
-    size = annotation_size
+    size = annotation_size,
+    family = "Segoe Script"
   ) +
   annotate(
     'text',
-    x = 2013,
+    x = 2012.5,
     y = 16,
     label = 'Data Analyst',
-    fontface = 'bold.italic',
     color = pallete_colors[[6]],
-    size = annotation_size
+    size = annotation_size,
+    family = "Segoe Script"
   ) +
   annotate(
     'text',
     x = 2018.5,
     y = -1,
     label = 'Biostatistician',
-    fontface = 'bold.italic',
     color = pallete_colors[[7]],
-    size = annotation_size
+    size = annotation_size,
+    family = "Segoe Script"
   ) 
 
 
@@ -190,7 +193,7 @@ plot <- plot +
     yend = 16,
     arrow = arrow(length = unit(0.01, 'npc'), ends = 'first'),
     color = 'black',
-    curvature = .5
+    curvature = .8
   ) +
   geom_curve(
     x = 2014,
@@ -221,8 +224,8 @@ plot <- plot +
     label = '1 year',
     angle = 90,
     size = 7,
-    fontface = 'bold.italic',
-    color = 'black'
+    color = 'black',
+    family = "Segoe Script"
   ) + 
   annotate(
     'text',
@@ -230,8 +233,8 @@ plot <- plot +
     y = 13,
     label = 'age',
     size = 5,
-    fontface = 'bold.italic',
-    color = 'black'
+    color = 'black',
+    family = "Segoe Script"
   ) +
   geom_segment(
     x = 1988.75,
@@ -276,7 +279,7 @@ plot <- plot +
     'text',
     x = 1987,
     y = -5,
-    label = 'My life in Months.....',
+    label = 'Michael Luu',
     size = 25,
     hjust = 0,
     fontface = 'bold.italic'
@@ -290,6 +293,6 @@ plot <- plot +
 
 plot
 
-ggsave('mylifeinmonths.png', height = 7, width = 15, dpi = 600)
+ggsave('mylifeinmonths.png', height = 7, width = 12, dpi = 600)
 
 
